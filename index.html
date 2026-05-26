@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medimind Pharmacy | Kapan, Kathmandu</title>
+    <style>
+        :root {
+            --primary-color: #008080; 
+            --primary-dark: #006060;
+            --accent-color: #25D366; 
+            --secondary-color: #f7f9f9; 
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .welcome-hero {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        .hero-text { flex: 1; }
+        .hero-text h2 { color: var(--primary-color); margin-top: 0; }
+        .hero-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 4px solid var(--primary-color);
+        }
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+
+        .showcase {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+        .showcase h2 {
+            text-align: center;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid #eaeaea;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .order-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .order-section h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: #fafafa;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: 2px solid var(--primary-color);
+            background-color: white;
+        }
+
+        .submit-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p.address {
+            background-color: #eaeaea;
+            padding: 10px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .member-card {
+            background: #fafafa;
+            border: 1px solid #eee;
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: calc(50% - 1.5rem);
+            box-sizing: border-box;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .member-card strong.role {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .member-card span.name {
+            display: block;
+            font-weight: 700;
+            margin: 5px 0;
+            font-size: 1.2rem;
+        }
+
+        .member-card span.phone {
+            display: block;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #333;
+            color: white;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-hero { flex-direction: column; text-align: center; }
+            .hero-image { width: 100%; border-width: 2px; }
+            .hero-text { padding: 1rem 0; }
+            .member-card { width: 100%; }
+            header h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Medimind Pharmacy</h1>
+        <p>Your Trusted Local Pharmacy in Kapan, Budhanilkantha</p>
+    </header>
+
+    <div class="container">
+        <section class="welcome-hero">
+            <div class="hero-text">
+                <h2>Welcome to Our Store</h2>
+                <p>Established with a commitment to health, Medimind Pharmacy serves the Kapan and Budhanilkantha community with care. We take pride in our well-maintained and comprehensive stock, as shown by our prominent store sign and well-stocked interior shelves.</p>
+            </div>
+            <div class="hero-image">
+                <img src="1.webp" alt="Medimind Pharmacy Store Front Sign">
+            </div>
+        </section>
+
+        <section class="showcase">
+            <h2>Look Inside Medimind</h2>
+            <div class="grid-container">
+                <div class="gallery-item">
+                    <img src="2.webp" alt="Medimind Pharmacy Internal Shelf View 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="3.webp" alt="Medimind Pharmacy Internal Shelf View 2">
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">We ensure quality stock and maintenance for your health needs.</p>
+        </section>
+
+        <section class="order-section">
+            <h2>Order Medicines Online</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Fill out the form below, and we will receive your order directly on WhatsApp.</p>
+            
+            <form id="orderForm" onsubmit="sendToWhatsApp(event)">
+                <div class="form-group">
+                    <label for="customerName">Your Full Name *</label>
+                    <input type="text" id="customerName" placeholder="e.g., Ram Bahadur" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerPhone">Your Phone Number *</label>
+                    <input type="tel" id="customerPhone" placeholder="e.g., 98XXXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="medicineName">Full Medicine Name & Quantity *</label>
+                    <textarea id="medicineName" placeholder="e.g., Paracetamol 500mg - 2 strips, Vitamin C - 1 bottle" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Order via WhatsApp
+                </button>
+            </form>
+        </section>
+
+        <section class="contact-info">
+            <h3>Contact Details</h3>
+            <p class="address"><strong>Address:</strong> Kapan, Budhanilkantha, Kathmandu 44600</p>
+            
+            <div class="team-members">
+                <div class="member-card">
+                    <strong class="role">Registered Owner:</strong>
+                    <span class="name">Diksha Acharya</span>
+                    <span class="phone">📞 +977 9863033182</span>
+                </div>
+                <div class="member-card">
+                    <strong class="role">Staff/Pharmacist:</strong>
+                    <span class="name">Nirmal Rijal</span>
+                    <span class="phone">📞 +977 9866392289</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Medimind Pharmacy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const medicine = document.getElementById('medicineName').value;
+            const whatsappNumber = "9779863033182";
+
+            const message = `*New Order - Medimind Pharmacy*%0A%0A` +
+                            `*Customer Name:* ${name}%0A` +
+                            `*Phone Number:* ${phone}%0A%0A` +
+                            `*Order Details:*%0A${medicine}`;
+
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
